@@ -5,7 +5,7 @@
     "version":"1.0",
     "directory":"",
     "createPackageDirectory":true,
-    "packageDirectory":"",
+    "packageDirectory":"cbSendPulse",
     "slug":"cbSendPulse",
     "type":"contentbox-modules",
     "author":"Lucid Outsourcing Solutions",
