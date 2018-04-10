@@ -3,7 +3,7 @@ Web Push Notifications For ContentBox
 
 ## **Introduction**
 
-**cbSendPulse** for is essential for every site, Web Push notifications work on a number of platforms. Customers can subscribe and receive notifications right on their desktop or mobile devices. for detail you can [checkout](https://sendpulse.com)
+**cbSendPulse** is essential for every site, Web Push notifications work on a number of platforms. Customers can subscribe and receive notifications right on their desktop or mobile devices. for detail you can [checkout](https://sendpulse.com)
 
 ## **Quick Start**
 
@@ -13,12 +13,12 @@ Clone the git repo - `git clone git@github.com:LucidSolutions/cbSendPulse.git` -
 
 Clone this repo into \modules\contentbox\modules_user of your contentbox code.
 
-## **Usuage**
+## **Usage**
 
 - register your site at https://sendpulse.com/register
 - install the module via commandbox `box install cbSendPulse`
 - go to Contentbox admin, activate the module
-- enter your client ID and client Secret at setting section
+- enter your client ID and client secret ID at setting section
 
 
 ## Todo
