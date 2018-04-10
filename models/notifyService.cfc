@@ -65,8 +65,7 @@ component singleton{
 		if(isJson(resultAccess.filecontent)){
 			var tempData = deserializeJSON(resultAccess.filecontent);
 		}
-
-		if(resultAccess.errordetail EQ '' AND resultAccess.status_code EQ 200){
+		if(resultAccess.errordetail EQ '' AND ((structKeyExists(resultAccess,'Statuscode') AND resultAccess.Statuscode EQ '200 OK') OR (structKeyExists(resultAccess,'status_code') AND resultAccess.status_code EQ 200))){
 			resJson['success'] = true;
 			resJson['data'] = tempData;
 			resJson['msg'] = 'Details Saved & Updated!';
@@ -98,10 +97,9 @@ component singleton{
 		var acc = getAccessToken();
 		if(acc.success EQ true){
 			cfhttp(method="get", url="#pairs.WEBSITE_URL#/?limit=#pairs.LIMITVAL#&offset=#pairs.OFFSETVAL#", result="resultWebSite") {
-				cfhttpparam(type="header" name="Authorization", value="#acc.data.token_type# #acc.data.access_token#");
+				cfhttpparam(type="header", name="Authorization", value="#acc.data.token_type# #acc.data.access_token#");
 			}
-
-			if(resultWebSite.errordetail EQ '' AND resultWebSite.status_code EQ 200){
+			if(resultWebSite.errordetail EQ '' AND ((structKeyExists(resultWebSite,'Statuscode') AND resultWebSite.Statuscode EQ '200 OK') OR (structKeyExists(resultWebSite,'status_code') AND resultWebSite.status_code EQ 200))){
 				resJson['success'] = true;
 				resJson['data'] = deserializeJSON(resultWebSite.filecontent);
 				
@@ -134,7 +132,7 @@ component singleton{
 
 		if(acc.success EQ true){
 				cfhttp(method="post", url="#pairs.POST_TASK_URL#", result="sendNotify") {
-				    cfhttpparam(type="header" name="Authorization", value="#acc.data.token_type# #acc.data.access_token#");
+				    cfhttpparam(type="header" ,name="Authorization", value="#acc.data.token_type# #acc.data.access_token#");
 					cfhttpparam(name="title", type="formfield", value="#rc.msgTitle#");
 					cfhttpparam(name="body", type="formfield", value="#rc.msgBody#");
 					cfhttpparam(name="website_id", type="formfield", value="#rc.webSite#");
@@ -144,7 +142,8 @@ component singleton{
 				if(isJson(sendNotify.filecontent)){
 					var tempData = deserializeJSON(sendNotify.filecontent);
 				}
-				if(sendNotify.errordetail EQ '' AND sendNotify.status_code EQ 200){
+				if(sendNotify.errordetail EQ '' AND ((structKeyExists(sendNotify,'Statuscode') AND sendNotify.Statuscode EQ '200 OK') OR (structKeyExists(sendNotify,'status_code') AND sendNotify.status_code EQ 200))){
+					// sendNotify.status_code EQ 200
 					resJson['success'] = true;
 					resJson['msg'] = "Notification Sent!!";
 				}else{
