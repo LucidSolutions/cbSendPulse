@@ -27,7 +27,7 @@ Clone this repo into \modules\contentbox\modules_user of your contentbox code.
 
 ## **Contributors**
 
-cbSendPulse is authored by **[Lucid Outsourcing Solutions](https://lucidsolutions.in/)** and everyone is welcome to contribute. 
+cbSendPulse is authored by **[Lucid Outsourcing Solutions](https://lucidoutsourcing.com/)** and everyone is welcome to contribute. 
 
 ## **Problems**
 
