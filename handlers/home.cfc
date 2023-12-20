@@ -1,7 +1,7 @@
 component {
 	property name="notifyService"		inject="id:notifyService@cbSendPulse";
-	property name="settingService"		inject="id:settingService@cb";
-   	property name="CBHelper"			inject="id:CBHelper@cb";
+	property name="settingService"		inject="id:settingService@contentbox";
+   	property name="CBHelper"			inject="id:CBHelper@contentbox";
    	property name="cbMessagebox" 	inject="messagebox@cbmessagebox";
    	
    	function preHandler(event,rc,prc){
@@ -12,13 +12,7 @@ component {
 		prc.xehContactSetting	= CBHelper.buildModuleLink("cbSendPulse","home.saveSettings");
 		prc.xehNotifyForm = CBHelper.buildModuleLink("cbSendPulse","home.contactFormSettings");
 		prc.xehNotifySubmit = CBHelper.buildModuleLink("cbSendPulse","home.saveNotify");
-		event.paramValue( "clientId", "" );
-		event.paramValue( "clientSecret", "" );
-		event.paramValue( "access_token_url", "" );
-		event.paramValue( "website_url", "" );
-		event.paramValue( "limitVal", "" );
-		event.paramValue( "offsetVal", "" );
-		event.paramValue( "post_task_url", "" );
+		event.paramValue( "clientId", "" ).paramValue( "clientSecret", "" ).paramValue( "access_token_url", "" ).paramValue( "website_url", "" ).paramValue( "limitVal", "" ).paramValue( "limitVal", "" ).paramValue( "offsetVal", "" ).paramValue( "post_task_url", "" );
 		var args 	= { name="cb_cbSendPulse" };
 		var allsettings = settingService.findWhere( criteria=args );
 
@@ -71,7 +65,7 @@ component {
 		}else{
 			cbMessageBox.setMessage(type='error',messageArray=dataRet);
 		}
-			CBHelper.setNextModuleEvent( "cbSendPulse", "home.index" );
+			CBHelper.moduleRelocate( "cbSendPulse", "home.index" );
 	}
 
 	function contactFormSettings(event,rc,prc) {
@@ -89,11 +83,11 @@ component {
 					event.setView( view="home/notify",module="cbSendPulse");
 				}else{
 					cbMessageBox.error(data.msg);
-					CBHelper.setNextModuleEvent( "cbSendPulse", "home.index" );
+					CBHelper.moduleRelocate( "cbSendPulse", "home.index" );
 				}
 			}else{
 				cbMessageBox.error('No data to show!');
-				CBHelper.setNextModuleEvent( "cbSendPulse", "home.index" );
+				CBHelper.moduleRelocate( "cbSendPulse", "home.index" );
 			}
 		}
 	}
@@ -102,7 +96,7 @@ component {
 		var args 	= { name="cb_cbSendPulse" };
 		if(event.getHTTPMethod() EQ 'GET'){
 			cbMessageBox.error('Only Allow Post Method');
-			CBHelper.setNextModuleEvent( "cbSendPulse", "home.index" );
+			CBHelper.moduleRelocate( "cbSendPulse", "home.index" );
 		}
 		var setting = settingService.findWhere( criteria=args );
 		if(!isNull(setting)){
@@ -118,7 +112,7 @@ component {
 					}
 					
 				}
-				CBHelper.setNextModuleEvent( "cbSendPulse", "home.index" );
+				CBHelper.moduleRelocate( "cbSendPulse", "home.index" );
 			}else{
 				cbMessageBox.setMessage(type='error',messageArray=dataRet);
 				contactFormSettings( argumentCollection=arguments );

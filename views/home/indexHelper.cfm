@@ -1,9 +1,10 @@
 ﻿<cfoutput>
 <!--- Custom JS --->
 <script>
-$( document ).ready( function(){
-    // pointers
-    $settingForm     = $( "##setting-form" );
+
+document.addEventListener("DOMContentLoaded", function (event) {
+   // pointers
+   $settingForm     = $( "##setting-form" );
     // initialize validator and add a custom form submission logic
     $settingForm.validate();
 
@@ -18,6 +19,7 @@ $( document ).ready( function(){
     });
     $("##csBtn").click(function(){
         if ($("##clientSecret").attr("type")=="text") {
+            
             $("##clientSecret").prop("type", "password")
             $("##csBtn").text('Show');
         }else{
@@ -25,7 +27,7 @@ $( document ).ready( function(){
             $("##csBtn").text('Hide');
         }
     });
-} );
+});
 
 </script>
 </cfoutput>

@@ -1,6 +1,6 @@
 component singleton{
 
-	property name="settingService"		inject="id:settingService@cb";
+	property name="settingService"		inject="id:settingService@contentbox";
 
 	function init(){
 		variables.token  = '';

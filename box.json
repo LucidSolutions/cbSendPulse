@@ -2,7 +2,7 @@
     "name":"Send Pulse Module For ContentBox",
     "shortDescription":"This is an awesome Send Pulse Web Push Notification module",
     "location":"https://github.com/LucidSolutions/cbSendPulse/archive/master.zip",
-    "version":"1.0",
+    "version":"2.0",
     "directory":"",
     "createPackageDirectory":true,
     "private":false,
